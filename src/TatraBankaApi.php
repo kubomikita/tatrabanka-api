@@ -314,6 +314,10 @@ abstract class TatraBankaApi
 			throw new TatraBankaApiException($data->error . (isset($data->error_description) ? ': ' . $data->error_description : NULL), $this->lastResponseCode);
 		}
 
+		if(isset($data->errorCode)) {
+			throw new TatraBankaApiException($data->errorCode . (isset($data->errorDescription) ? ': ' . $data->errorDescription : NULL), $this->lastResponseCode);
+		}
+
 		return $data;
 	}
 
